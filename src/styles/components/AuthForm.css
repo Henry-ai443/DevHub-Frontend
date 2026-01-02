@@ -1,0 +1,43 @@
+.glass-card {
+  background: var(--glass-bg);
+  border-radius: var(--card-radius);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  padding: 2rem;
+  width: 90%;          /* smaller width for mobile */
+  max-width: 400px;    /* maximum width for large screens */
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease; /* smooth resizing */
+}
+
+.glass-card input,
+.glass-card select,
+.glass-card button {
+  width: 100%;        
+  box-sizing: border-box;
+}
+
+
+.form-title {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  color: var(--text-color);
+}
+
+.glass-card button {
+  background: var(--primary-color);
+  color: #fff;
+  cursor: pointer;
+  transition: 0.3s;
+  padding: 0.75rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  border: none;
+}
+
+.glass-card button:hover {
+  background: #1069c6;
+}

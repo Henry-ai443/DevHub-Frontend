@@ -1,0 +1,16 @@
+/* Global dark theme + variables */
+:root {
+  --background-color: #121212;
+  --primary-color: #1f8ef1;
+  --text-color: #ffffff;
+  --glass-bg: rgba(255,255,255,0.05);
+  --glass-blur: 10px;
+  --card-radius: 16px;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}

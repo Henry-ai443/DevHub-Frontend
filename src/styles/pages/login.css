@@ -1,0 +1,197 @@
+.auth-form-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 1rem;
+
+  background-image: url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5MjA4fDB8MHwxfHNlYXJjaHwxfHxkYXJrJTIwY29kZXxlbnwwfHx8fDE2NjYxNzI3MjA&ixlib=rb-4.0.3&q=80&w=1080');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.glass-card input {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  border: none;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-color);
+}
+
+.password-wrapper {
+  position: relative;
+}
+
+.show-password-toggle {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #aaa;
+  font-size: 0.9rem;
+  user-select: none;
+}
+.remember-me-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 1rem;
+    gap: 0.5rem;
+    color: var(--text-color);
+    font-size: 0.9rem;
+    user-select: none;
+}
+.remember-me-wrapper input[type='checkbox']{
+    width: 18px;
+    height: 18px;
+    margin: 0;
+    accent-color: var(--primary-color);
+    cursor: pointer;
+}pointerpointer
+.remember-me-wrapper label{
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+p a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+p a:hover {
+  text-decoration: underline;
+  color: #1069c6;
+}
+
+p {
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+  color: #ff6b6b;
+}
+
+@media(max-width: 768px){
+    .glass-card{
+        padding: 1.5rem;
+        width: 95%;
+    }
+
+    .glass-card input,
+    .glass-card select,
+    .glass-card button{
+        font-size: 0.9rem;
+        padding: 0.6rem;
+    }
+
+    .form-title{
+        font-size: 1.5rem;
+    }
+}
+
+@media(max-width: 480px){
+    .glass-card{
+        padding: 1rem;
+        width: 100%;
+    }
+    .form-title{
+        font-size: 1.3rem;
+    }
+
+    .glass-card input,
+    .glass-card select,
+    .glass-card button{
+        font-size: 0.85rem;
+        padding: 0.5rem;
+    }
+}
+
+.form-container {
+  position: relative; 
+}
+
+.form-spinner-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--card-radius);
+  z-index: 10; 
+}
+
+.spinner {
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-top: 4px solid var(--primary-color);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.form-container form:disabled {
+  pointer-events: none;
+}
+
+/* Success overlay for checkmark animation */
+.success-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--card-radius);
+  z-index: 20;
+}
+
+/* Circle around checkmark */
+.checkmark-circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: scaleUp 0.5s ease forwards;
+}
+
+/* The animated checkmark */
+.checkmark {
+  width: 30px;
+  height: 15px;
+  border-left: 4px solid white;
+  border-bottom: 4px solid white;
+  transform: rotate(-45deg) scale(0);
+  animation: checkmarkDraw 0.5s 0.3s forwards;
+}
+
+/* Scale up the circle */
+@keyframes scaleUp {
+  0% { transform: scale(0); }
+  100% { transform: scale(1); }
+}
+
+/* Animate the checkmark drawing */
+@keyframes checkmarkDraw {
+  0% { transform: rotate(-45deg) scale(0); }
+  100% { transform: rotate(-45deg) scale(1); }
+}
