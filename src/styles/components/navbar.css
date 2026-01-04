@@ -1,0 +1,96 @@
+/* Root navbar */
+.navbar {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(12px);
+  background: rgba(10, 10, 20, 0.6);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Container */
+.navbar-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Logo */
+.navbar-logo {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+/* Desktop links */
+.navbar-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.navbar-links a {
+  color: #e5e7eb;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.navbar-links a:hover {
+  color: #ffffff;
+}
+
+.signup-btn {
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  color: white;
+}
+
+/* Hamburger button */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+/* Mobile menu */
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  background: rgba(15, 15, 30, 0.95);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.mobile-menu a {
+  padding: 1rem 1.5rem;
+  color: #e5e7eb;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.mobile-menu a:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* Open state */
+.mobile-menu.open {
+  display: flex;
+}
+
+/* Responsive rules */
+@media (max-width: 768px) {
+  .navbar-links {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+}

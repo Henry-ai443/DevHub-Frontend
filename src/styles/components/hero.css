@@ -1,0 +1,141 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body, html {
+  overflow-x: hidden;
+}
+
+.hero-section {
+  position: relative;
+  width: 100%;
+  min-height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 2rem 2rem 2rem; /* Top padding added for spacing from navbar */
+  background-image: url('https://images.unsplash.com/photo-1581091215366-0a4c2a9b69f2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: 0;
+}
+
+.hero-container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1400px; /* Wider max width */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
+  padding: 2rem;
+  overflow: hidden;
+}
+
+.hero-content {
+  flex: 1;
+  max-width: 650px; /* Prevent card from being too thin */
+  text-align: left;
+  padding: 3rem;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(15px);
+  color: #ffffff;
+}
+
+.hero-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-image img {
+  width: 100%;
+  max-width: 500px; /* Keep image proportional */
+  border-radius: 16px;
+  object-fit: cover;
+}
+
+/* Buttons */
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+
+.btn-primary, .btn-secondary {
+  padding: 0.8rem 2rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.3);
+}
+
+.btn-secondary:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+/* Typography */
+.hero-title { font-size: 3rem; margin-bottom: 1rem; font-weight: 700; }
+.hero-subtitle { font-size: 1.2rem; margin-bottom: 2rem; color: #e0e0e0; }
+
+/* Responsive */
+@media(max-width: 1024px) {
+  .hero-container {
+    flex-direction: column;
+    text-align: center;
+    padding: 2rem;
+  }
+
+  .hero-content {
+    width: 100%;          /* Take full width */
+    max-width: 100%;      /* Remove previous max-width */
+    margin: 0 auto 2rem;  /* Center horizontally and add bottom spacing */
+    padding: 2rem;        /* Padding inside card */
+  }
+
+  .hero-image {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 2rem;
+  }
+}
+
+@media(max-width: 480px){
+  .hero-title { font-size: 2rem; }
+  .hero-subtitle { font-size: 1rem; }
+  .hero-content { 
+    padding: 1.5rem;  /* Slightly smaller padding on very small screens */
+    border-radius: 16px;
+  }
+}

@@ -45,7 +45,7 @@ export default function Signup() {
       setSuccess(true);
 
       // Wait 1.5s before redirecting
-      setTimeout(() => navigate('/dashboard'), 1500);
+      setTimeout(() => navigate('/dashboard'), 2000);
 
     } catch (err) {
       setError(err.message);
