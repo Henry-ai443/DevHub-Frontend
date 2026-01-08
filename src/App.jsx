@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-d
 import Signup from "./pages/signup";
 import Login from "./pages/login";
 import LandingPage from "./pages/Landing";
+import ProfileForm from "./components/ProfileForm";
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
             <Routes>
                 <Route path="/signup" element={<Signup/>}/>
                 <Route path="/login" element={<Login/>}/>
+                <Route path="/profile" element ={<ProfileForm/>}/>
                 <Route path="/" element={<LandingPage/>}></Route>
             </Routes>
         </Router>
