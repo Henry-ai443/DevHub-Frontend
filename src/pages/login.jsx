@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import AuthForm from '../components/AuthForm';
 import { useNavigate, Link } from 'react-router-dom';
-import '../styles/pages/login.css';
+import { useAuth } from '../context/AuthContext';
 import { FiEye, FiEyeOff } from 'react-icons/fi';
+import AuthForm from '../components/AuthForm';
+import '../styles/pages/login.css';
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -14,6 +15,7 @@ export default function Login() {
   const [success, setSuccess] = useState(false);
 
   const navigate = useNavigate();
+  const { login } = useAuth();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -21,43 +23,26 @@ export default function Login() {
     setLoading(true);
 
     try {
-      const response = await fetch('http://localhost:5000/api/auth/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password }),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) throw new Error(data.message || 'Login failed');
-
-      if (rememberMe) localStorage.setItem('token', data.token);
-      else sessionStorage.setItem('token', data.token);
-
-      // ✅ Trigger success animation
+      await login(email, password, rememberMe);
       setSuccess(true);
-
-      // Wait 1.5s before redirecting
       setTimeout(() => navigate('/dashboard'), 2000);
-
     } catch (err) {
-      setError(err.message);
+      setError(err.message || 'Login failed');
     } finally {
       setLoading(false);
     }
   };
 
+
   return (
     <AuthForm title="Login">
       <div className="form-container">
-        {/* Spinner overlay while loading */}
         {loading && (
           <div className="form-spinner-overlay">
             <div className="spinner"></div>
           </div>
         )}
 
-        {/* ✅ Success checkmark overlay */}
         {success && (
           <div className="success-overlay">
             <div className="checkmark-circle">
@@ -67,11 +52,11 @@ export default function Login() {
         )}
 
         <form onSubmit={handleLogin}>
-          {error && <p style={{ color: 'red', marginBottom: '1rem' }}>{error}</p>}
+          {error && <div className="error-message">{error}</div>}
 
           <input
             type="email"
-            placeholder="Email"
+            placeholder="Email Address"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
@@ -100,17 +85,21 @@ export default function Login() {
                 checked={rememberMe}
                 onChange={(e) => setRememberMe(e.target.checked)}
               />
-              Remember Me
+              <span>Remember me</span>
             </label>
+            <Link to="/forgot-password" className="forgot-link">Forgot Password?</Link>
           </div>
 
-          <button type="submit" disabled={loading || success}>Login</button>
-
-          <p style={{ textAlign: 'center', marginTop: '1rem' }}>
-            Don't have an account? <Link to="/signup">Sign Up</Link>
-          </p>
+          <button type="submit" disabled={loading} className="submit-btn">
+            {loading ? 'Logging in...' : 'Login'}
+          </button>
         </form>
+
+        <p className="auth-link">
+          Don't have an account? <Link to="/signup">Sign up</Link>
+        </p>
       </div>
     </AuthForm>
   );
 }
+          
